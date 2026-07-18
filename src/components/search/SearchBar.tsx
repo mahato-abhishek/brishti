@@ -33,7 +33,7 @@ const SearchBar = () => {
     const timeout = setTimeout(async () => {
       const city = await reverseGeo(userLocation);
       setDisplayLocation(
-        `${city.address.city}, ${city.address.state}, ${city.address.country}`,
+        `${city.address.city ?? city.address.county}, ${city.address.state}, ${city.address.country}`,
       );
     }, 200);
 
@@ -63,13 +63,15 @@ const SearchBar = () => {
       </div>
       {isActive && (
         <ul className="absolute border z-50 dark:border-gray-700 border-gray-300 h-10 w-full h-fit max-h-84 overflow-scroll dark:bg-slate-800 bg-gray-100 rounded-xl mt-2">
-          <button
+          <p
             onClick={() => handleUser()}
-            className="hover:text-blue-500 px-4 py-2 cursor-pointer flex gap-2 items-center justify-left hover:bg-gray-200 dark:hover:bg-slate-700 rounded-lg m-1 w-98/100"
+            className="hover:text-blue-500 px-4 py-2 cursor-pointer flex gap-2 items-center justify-left hover:bg-gray-200 dark:hover:bg-slate-700 rounded-lg m-1 "
           >
             <Navigation size="16" />
-            Use Current Location
-          </button>
+            <span className="text-left text-sm sm:text-md">
+              Use Current Location
+            </span>
+          </p>
           <SearchSuggestion input={query} />
         </ul>
       )}
