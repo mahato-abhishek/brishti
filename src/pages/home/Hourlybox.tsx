@@ -21,7 +21,7 @@ function Content({
 
   return (
     <div className="h-full w-24 rounded-xl bg-white dark:bg-gray-950 flex flex-col   items-center justify-center p-2">
-      <p className="font-bold text-blue-400 text-sm">
+      <p className="font-semibold text-blue-400 text-sm">
         {time ?? "-"}
         {}
       </p>
@@ -52,8 +52,8 @@ const Hourlybox = () => {
   }
 
   return (
-    <div className="h-fit w-full rounded-xl bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-2">
-      <p className="text-blue-400 font-semibold"> Hourly</p>
+    <div className="h-fit w-full rounded-xl bg-gray-100 dark:bg-gray-900 p-4 flex flex-col gap-2 ">
+      <p className="text-blue-500 font-semibold p-2"> Hourly</p>
       <div className="w-full overflow-scroll h-fit ">
         <div className="h-fit w-fit flex gap-2 overflow-scroll ">
           {arr.map((val, index) => (

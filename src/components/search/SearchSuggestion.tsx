@@ -8,7 +8,7 @@ type InputProp = {
 };
 
 const SearchSuggestion = (props: InputProp) => {
-  const { setSelectedCity } = useWeather();
+  const { setSelectedCity, setDisplayLocation } = useWeather();
 
   const [cities, setCities] = useState<City[]>([]);
 
@@ -27,7 +27,7 @@ const SearchSuggestion = (props: InputProp) => {
           <li
             onClick={() => {
               setSelectedCity(city);
-              console.log(city);
+              setDisplayLocation("");
             }}
             key={city.id}
             className=" px-5 py-1 dark:hover:bg-slate-700 m-1 hover:bg-gray-200  cursor-pointer rounded"

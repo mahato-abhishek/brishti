@@ -13,11 +13,13 @@ export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children }: ThemeProvederProps) {
   const [theme, setTheme] = useState<Theme>(
-    window.matchMedia("(prefers-color-scheme:dark)") ? "dark" : "light",
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light",
   );
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev == "light" ? "dark" : "light"));
+    setTheme((prev) => (prev == "dark" ? "light" : "dark"));
   };
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

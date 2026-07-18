@@ -45,31 +45,36 @@ const Highlight = () => {
   const sunSet = setTime ? formatAMPM(setTime) : "";
 
   return (
-    <div className=" bg-gray-100 dark:bg-gray-900 flex rounded-xl  flex-col ">
-      <p className="p-4 font-bold text-blue-400">Today's Highlight</p>
-      <div className="grid grid-cols-4 gap-2 grid-rows-2 h-full p-4">
-        <HightlightBox
-          icon=<Wind size="16" />
-          name="Wind Status"
-          value={`${weather?.current.wind_speed_10m} km/hr`}
-        />
-        <HightlightBox
-          icon=<Droplet size="16" />
-          name="Humidity"
-          value={`${weather?.current.relative_humidity_2m}`}
-        />
-        <Sun icon={Sunrise} name="Sunrise" value={sunRise} />
-        <HightlightBox
-          icon=<WindArrowDown className="size-4 " />
-          name="Pressure"
-          value={`${weather?.current.pressure_msl} hPa`}
-        />
-        <HightlightBox
-          icon=<CloudFog size="16" />
-          name="Cloud Cover"
-          value={`${weather?.current.cloud_cover}`}
-        />
-        <Sun icon={Moonrise} name="Sunset" value={sunSet} />
+    <div className=" bg-gray-100 dark:bg-gray-900 rounded-xl h-fit">
+      <p className="p-4 font-bold text-blue-500">Today's Highlight</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2  p-4 h-fit">
+        <div className="grid grid-cols-2 gap-2 ">
+          <HightlightBox
+            icon=<Wind size="16" />
+            name="Wind Status"
+            value={`${weather?.current.wind_speed_10m} km/hr`}
+          />
+          <HightlightBox
+            icon=<Droplet size="16" />
+            name="Humidity"
+            value={`${weather?.current.relative_humidity_2m}%`}
+          />
+          <HightlightBox
+            icon=<WindArrowDown size="16" />
+            name="Pressure"
+            value={`${weather?.current.pressure_msl} hPa`}
+          />
+          <HightlightBox
+            icon=<CloudFog size="16" />
+            name="Cloud Cover"
+            value={`${weather?.current.cloud_cover}%`}
+          />
+        </div>
+        <div className="grid grid-cols-1 gap-2 ">
+          <Sun icon={Sunrise} name="Sunrise" value={sunRise} />
+
+          <Sun icon={Moonrise} name="Sunset" value={sunSet} />
+        </div>
       </div>
     </div>
   );

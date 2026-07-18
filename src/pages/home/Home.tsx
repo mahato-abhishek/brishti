@@ -12,10 +12,8 @@ const Home = () => {
         <Highlight />
       </div>
       <div className=" h-fit grid grid-cols-1 md:grid-cols-2 w-full gap-2">
-        <div className=" col-span-1 h-fit rounded-xl dark:bg-gray-950 bg-white p">
-          <p className="font-semibold p-4 text-blue-400">
-            How is the temperature today
-          </p>
+        <div className=" col-span-1 h-fit rounded-xl dark:bg-gray-950 bg-gray-100 p">
+          <p className="font-semibold p-4 text-blue-500">Temperature today</p>
           <AreaChartContainer />
         </div>
         <Forecast />

@@ -9,6 +9,10 @@ import {
 import { type City } from "../types/city";
 import { type WeatherData } from "../types/weather";
 import getWeather from "../services/weatherApi";
+type locationProps = {
+  latitude: number;
+  longitude: number;
+};
 
 type WeatherContextType = {
   selectedCity: City | null;
@@ -18,8 +22,11 @@ type WeatherContextType = {
   loading: boolean;
 
   error: string | null;
-
+  displayLocation: string | null;
+  setDisplayLocation: (str: string) => void;
+  userLocation: locationProps | null;
   setSelectedCity: (city: City) => void;
+  setUserLocation: (location: locationProps) => void;
 };
 const defaultcity: City = {
   id: 1275004,
@@ -29,6 +36,7 @@ const defaultcity: City = {
   latitude: 22.56263,
   longitude: 88.36304,
 };
+
 export const WeatherContext = createContext<WeatherContextType | null>(null);
 
 type Props = {
@@ -37,7 +45,8 @@ type Props = {
 
 export function WeatherProvider({ children }: Props) {
   const [selectedCity, setSelectedCity] = useState<City | null>(defaultcity);
-
+  const [userLocation, setUserLocation] = useState<locationProps | null>(null);
+  const [displayLocation, setDisplayLocation] = useState<string | null>(null);
   const [weather, setWeather] = useState<WeatherData | null>(null);
 
   const [loading, setLoading] = useState(false);
@@ -69,6 +78,31 @@ export function WeatherProvider({ children }: Props) {
     fetchWeather();
   }, [selectedCity]);
 
+  useEffect(() => {
+    if (!userLocation) return;
+
+    async function fetchWeather() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const data = await getWeather(
+          userLocation!.latitude,
+          userLocation!.longitude,
+        );
+
+        setWeather(data);
+        console.log(data);
+      } catch {
+        setError("Unable to fetch weather.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchWeather();
+  }, [userLocation]);
+
   return (
     <WeatherContext.Provider
       value={{
@@ -79,8 +113,11 @@ export function WeatherProvider({ children }: Props) {
         loading,
 
         error,
-
+        displayLocation,
+        setDisplayLocation,
+        userLocation,
         setSelectedCity,
+        setUserLocation,
       }}
     >
       {children}
