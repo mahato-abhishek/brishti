@@ -6,7 +6,7 @@ import Hourlybox from "./Hourlybox";
 
 const Home = () => {
   return (
-    <div className="pt-20 h-fit  w-95/100 max-w-6xl m-auto space-y-2">
+    <div className="pt-20 h-fit  w-96/100 max-w-6xl m-auto space-y-2">
       <div className="grid grid-cols-1 md:grid-cols-2  h-fit w-full gap-2">
         <Currentbox />
         <Highlight />

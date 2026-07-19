@@ -11,11 +11,11 @@ type Prop = {
 };
 const HightlightBox = (props: Prop) => {
   return (
-    <div className="col-span-1 rounded-xl bg-white dark:bg-slate-950 flex flex-col align-center justify-center gap-2  p-2">
-      <p className=" flex align-center justify-center text-xs font-semibold gap-2">
+    <div className="col-span-1  rounded-xl bg-white dark:bg-slate-950 flex flex-col align-center justify-center gap-2  p-4 md:p-0">
+      <p className=" flex align-center justify-center text-xs sm:text-sm font-semibold gap-2">
         {props.icon} <span> {props.name}</span>
       </p>
-      <p className="text-center font-bold">{props.value}</p>
+      <p className="text-center font-bold text-sm sm:text-md">{props.value}</p>
     </div>
   );
 };
@@ -45,9 +45,9 @@ const Highlight = () => {
   const sunSet = setTime ? formatAMPM(setTime) : "";
 
   return (
-    <div className=" bg-gray-100 dark:bg-gray-900 rounded-xl h-fit">
+    <div className=" bg-gray-100 dark:bg-gray-900 rounded-xl h-full">
       <p className="p-4 font-bold text-blue-500">Today's Highlight</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2  p-4 h-fit">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2  p-2 h-fit">
         <div className="grid grid-cols-2 gap-2 ">
           <HightlightBox
             icon=<Wind size="16" />
