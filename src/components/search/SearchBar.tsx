@@ -50,7 +50,7 @@ const SearchBar = () => {
         <input
           type="text"
           value={query}
-          placeholder="Search your location"
+          placeholder="Search your city"
           className="w-full focus:outline-0 dark:text-white text-gray-950 text-sm"
           onFocus={() => setActive(true)}
           onBlur={() =>
@@ -69,7 +69,7 @@ const SearchBar = () => {
           >
             <Navigation size="16" />
             <span className="text-left text-sm sm:text-md">
-              Use Current Location
+              Current Location
             </span>
           </p>
           <SearchSuggestion input={query} />

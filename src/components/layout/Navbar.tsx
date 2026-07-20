@@ -1,6 +1,7 @@
 import { useTheme } from "../../context/ThemeContext";
 import SearchBar from "../search/SearchBar";
 import { Sun, Moon } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -15,9 +16,15 @@ const Navbar = () => {
         </div>
         <SearchBar />
         <div className="flex items-center justify-center">
+          <a href="https://github.com/mahato-abhishek/brishti" className="pl-3">
+            {" "}
+            <FaGithub size="16" />
+          </a>
+
+          <p className="px-2 dark:text-gray-700 text-gray-300 text-sm ">|</p>
           <button
             onClick={() => toggleTheme()}
-            className=" px-3 sm:px-5 cursor-pointer"
+            className=" pr-3 sm:pr-5 cursor-pointer"
           >
             {theme == "light" ? <Sun size="16" /> : <Moon size="16" />}
           </button>
